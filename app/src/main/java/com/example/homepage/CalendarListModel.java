@@ -1,13 +1,13 @@
 package com.example.homepage;
 
-public class DateListModel {
+public class CalendarListModel {
 
-    private int data_id;
+    private int date_id;
     private String date_name;
     private String date_text;
 
-    public DateListModel(int data_id, String date_name, String date_text) {
-        this.data_id = data_id;
+    public CalendarListModel(int data_id, String date_name, String date_text) {
+        this.date_id = data_id;
         this.date_text = date_text;
         this.date_name = date_name;
     }
@@ -20,12 +20,12 @@ public class DateListModel {
         this.date_name = date_name;
     }
 
-    public int getData_id() {
-        return data_id;
+    public int getDate_id() {
+        return date_id;
     }
 
-    public void setData_id(int data_id) {
-        this.data_id = data_id;
+    public void setDate_id(int date_id) {
+        this.date_id = date_id;
     }
 
     public String getDate_text() {

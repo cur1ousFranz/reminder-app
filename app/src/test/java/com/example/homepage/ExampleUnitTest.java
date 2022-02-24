@@ -1,8 +1,9 @@
 package com.example.homepage;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import static org.junit.Assert.*;
+
 
 /**
  * Example local unit test, which will execute on the development machine (host).

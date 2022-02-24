@@ -51,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Adding one task to to_do_task table
      * @param taskList
      */
-    public boolean addOneTask(TaskListModel taskList){
+    public boolean addOneTask(TodoListModel taskList){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -71,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @return
      * @param taskList
      */
-    public boolean deleteOneTask(TaskListModel taskList){
+    public boolean deleteOneTask(TodoListModel taskList){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String queryString = " DELETE FROM " + TASK_TABLE + " WHERE " + TASK_ID + " = " + taskList.getId();
@@ -89,11 +89,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Reading all task in Task table in database
      * @return
      */
-    public List<TaskListModel> taskLists(){
+    public List<TodoListModel> taskLists(){
 
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        List<TaskListModel> taskModels = new ArrayList<>();
+        List<TodoListModel> taskModels = new ArrayList<>();
 
         String queryString = " SELECT * FROM " + TASK_TABLE;
         @SuppressLint("Recycle") Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
@@ -103,7 +103,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int id = cursor.getInt(0);
             String taskName = cursor.getString(1);
 
-            TaskListModel taskList = new TaskListModel(id, taskName);
+            TodoListModel taskList = new TodoListModel(id, taskName);
             taskModels.add(taskList);
 
         }
@@ -113,13 +113,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Adding date into date_database
      */
-    public boolean addOneTask(DateListModel dateListModel){
+    public boolean addOneTask(CalendarListModel calendarListModel){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(DATE_NAME, dateListModel.getDate_name());
-        contentValues.put(DATE_TEXT, dateListModel.getDate_text());
+        contentValues.put(DATE_NAME, calendarListModel.getDate_name());
+        contentValues.put(DATE_TEXT, calendarListModel.getDate_text());
 
         long insert = sqLiteDatabase.insert(DATE_TABLE, null, contentValues);
 
@@ -135,10 +135,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Read all the date_text from Date Table
      * @return
      */
-    public List<DateListModel> dateList(){
+    public List<CalendarListModel> dateList(){
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        List<DateListModel> dateListModels = new ArrayList<>();
+        List<CalendarListModel> calendarListModels = new ArrayList<>();
 
         String queryString = " SELECT * FROM " + DATE_TABLE;
         @SuppressLint("Recycle") Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
@@ -150,11 +150,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String taskName = cursor.getString(2);
 
 
-            DateListModel dateListModel = new DateListModel(id, dateName, taskName);
-            dateListModels.add(dateListModel);
+            CalendarListModel calendarListModel = new CalendarListModel(id, dateName, taskName);
+            calendarListModels.add(calendarListModel);
 
         }
-        return dateListModels;
+        return calendarListModels;
+
+    }
+
+    /**
+     * Deleting data in date table
+     * @return
+     * @param calendarListModel
+     */
+    public boolean deleteOneTask(CalendarListModel calendarListModel){
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String queryString = " DELETE FROM " + DATE_TABLE + " WHERE " + DATE_ID + " = " + calendarListModel.getDate_id();
+
+        Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst())
+            return true;
+        else
+            return false;
 
     }
 }

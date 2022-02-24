@@ -1,11 +1,11 @@
 package com.example.homepage;
 
-public class TaskListModel {
+public class TodoListModel {
 
     private int id;
     private String taskName;
 
-    public TaskListModel(int id, String taskName) {
+    public TodoListModel(int id, String taskName) {
         this.id = id;
         this.taskName = taskName;
     }
