@@ -23,6 +23,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATE_NAME = "date_name";
     private static final String DATE_TEXT = "date_text";
 
+    public static final String ALARM_TABLE = "alarm_table";
+    private static final String ALARM_ID = "alarm_id";
+    private static final String ALARM_HOUR = "alarm_hour";
+    private static final String ALARM_MINUTE = "alarm_minute";
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, "reminder.db", null, 1);
     }
@@ -30,11 +35,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String queryString = " CREATE TABLE " + TASK_TABLE + " (" + TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK_NAME + " TEXT " + ")";
-        String queryString2 = " CREATE TABLE " + DATE_TABLE + " (" + DATE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DATE_NAME + " TEXT," + DATE_TEXT + " TEXT " + " )";
-
-
+        String queryString2 = " CREATE TABLE " + DATE_TABLE + " (" + DATE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DATE_NAME + " TEXT, " + DATE_TEXT + " TEXT " + " )";
+        String queryString3 = " CREATE TABLE " + ALARM_TABLE + " (" + ALARM_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + ALARM_HOUR + " INTEGER, " + ALARM_MINUTE + " INTEGER " + ")";
         sqLiteDatabase.execSQL(queryString2);
         sqLiteDatabase.execSQL(queryString);
+        sqLiteDatabase.execSQL(queryString3);
 
     }
 
@@ -43,6 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TASK_TABLE);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + DATE_TABLE);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + ALARM_TABLE);
         onCreate(sqLiteDatabase);
 
     }
@@ -175,5 +181,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return false;
 
+    }
+
+    public boolean addOneAlarm(AlarmClockModel alarmClockModel){
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ALARM_HOUR, alarmClockModel.getClockHour());
+        contentValues.put(ALARM_MINUTE, alarmClockModel.getClockMinute());
+        long insert = sqLiteDatabase.insert(ALARM_TABLE, null, contentValues);
+
+        if (insert == 1){
+            return true;
+        }
+        else
+            return false;
+
+    }
+
+    public boolean deleteAlarm(AlarmClockModel alarmClockModel){
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String queryString = " DELETE FROM " + ALARM_TABLE + " WHERE " + ALARM_ID + " = " + alarmClockModel.getClockId();
+
+        Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst())
+            return true;
+        else
+            return false;
+
+    }
+
+    public List<AlarmClockModel> alarmList(){
+
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        List<AlarmClockModel> alarmClockModelList = new ArrayList<>();
+
+        String queryString = " SELECT * FROM " + ALARM_TABLE;
+        @SuppressLint("Recycle") Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()){
+
+            int id = cursor.getInt(0);
+            int hour = cursor.getInt(1);
+            int minute = cursor.getInt(2);
+
+            AlarmClockModel alarmClockModel = new AlarmClockModel(id, hour, minute);
+            alarmClockModelList.add(alarmClockModel);
+
+        }
+        return alarmClockModelList;
     }
 }

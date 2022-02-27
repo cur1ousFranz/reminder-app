@@ -11,17 +11,17 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private CardView todolistCardView, calendarCardView;
+    private CardView todolistCardView, calendarCardView, alarmClockCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_main);
 
 
         todolistCardView = findViewById(R.id.todoTaskCardView);
         calendarCardView = findViewById(R.id.calendarCardView);
+        alarmClockCardView = findViewById(R.id.alarmClockCardView);
 
         todolistCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Calendar.class));
+            }
+        });
+
+        alarmClockCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AlarmClock.class));
             }
         });
     }

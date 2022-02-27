@@ -26,7 +26,7 @@ public class Calendar extends AppCompatActivity {
     private CalendarView calendarView;
     private Button addDateButton;
     private DatabaseHelper databaseHelper;
-    private TextView textView2;
+    private TextView textView2, noDateTextView;
     private Dialog dialog;
 
     private ArrayList<CalendarListModel> calendarListModels;
@@ -36,7 +36,6 @@ public class Calendar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_calendar);
 
 
@@ -58,6 +57,7 @@ public class Calendar extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(Calendar.this);
         dialog = new Dialog(this);
         calendar = this;
+        noDateTextView = findViewById(R.id.noDateTextView);
     }
 
     private void buttonClick() {
@@ -134,6 +134,11 @@ public class Calendar extends AppCompatActivity {
                 R.layout.date_list_button, calendarListModels);
 
         cardListView.setAdapter(adapter);
+        if (cardListView.getAdapter().getCount() == 0){
+            noDateTextView.setVisibility(View.VISIBLE);
+        }
+        else
+            noDateTextView.setVisibility(View.GONE);
     }
 
     public void deleteCalendarDialog(CalendarListModel calendarListModel) {

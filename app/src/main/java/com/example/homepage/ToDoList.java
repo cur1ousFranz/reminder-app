@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class ToDoList extends AppCompatActivity {
     private Button addButton;
     private DatabaseHelper databaseHelper;
     private Dialog dialog;
+    private TextView noTaskTextView;
 
     @SuppressLint("StaticFieldLeak")
     public static ToDoList toDoList;
@@ -32,7 +34,6 @@ public class ToDoList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_to_do_list);
 
         //Calling all the methods below
@@ -74,6 +75,7 @@ public class ToDoList extends AppCompatActivity {
         ImageView imageClose = dialog.findViewById(R.id.imageClose);
 
         EditText editText = dialog.findViewById(R.id.taskName);
+        
 
         confirmDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,11 +109,15 @@ public class ToDoList extends AppCompatActivity {
     public void readAllTasks() {
 
         todoListModels = new ArrayList<>(databaseHelper.taskLists());
-
         TodoListAdapter adapter = new TodoListAdapter(getApplicationContext(),
                 R.layout.task_list_button, todoListModels);
         listView.setAdapter(adapter);
 
+        //Showing a message "Currently No Task" if there is no task in the list
+        if (listView.getAdapter().getCount() == 0){
+            noTaskTextView.setVisibility(View.VISIBLE);
+        }else
+            noTaskTextView.setVisibility(View.GONE);
     }
 
     /**
@@ -124,6 +130,7 @@ public class ToDoList extends AppCompatActivity {
         dialog = new Dialog(this);
         todoListModels = new ArrayList<>();
         toDoList = this;
+        noTaskTextView = findViewById(R.id.noTaskTextView);
 
     }
 

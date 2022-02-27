@@ -3,13 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/drawable/border_img.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/drawable/ic_calendarIcon_background.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/drawable/images.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/font/.xml" value="0.23020833333333332" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout-large/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout-normal/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout-small/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout-v28/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/activity_calendar.xml" value="0.22" />
-        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout-v31/activity_alarm_clock.xml" value="0.2" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/activity_alarm_clock.xml" value="0.25" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/activity_calendar.xml" value="0.25" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/activity_to_do_list.xml" value="0.25" />
+        <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/add_alarm_dialog.xml" value="0.25" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/date_dialog.xml" value="0.25" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/date_list_button.xml" value="0.1" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/layout/delete_dialog.xml" value="0.2" />
@@ -22,6 +29,7 @@
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/mipmap-anydpi-v26/ic_calendar_round.xml" value="0.140625" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/mipmap-anydpi-v26/ic_calendaricon.xml" value="0.140625" />
         <entry key="..\:/Users/rizza canono/AndroidStudioProjects/HomePage/app/src/main/res/mipmap-anydpi-v26/ic_calendaricon_round.xml" value="0.1" />
+        <entry key="..\:/Users/rizza canono/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/activity_list_item.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/rizza canono/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.2" />
       </map>
     </option>
